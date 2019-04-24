@@ -19,16 +19,24 @@ public:
     ~Sudoku();
 
     void initNewGame();
+    void setFont(QPushButton *button);
+    void setStyle(QPushButton *button);
+    bool checkWinCondition(QVector<QPushButton *> m_board, QVector<QString> m_goodBoard);
+
 
 private:
     Ui::Sudoku *ui;
 
-    //QPushButton *m_push;
     QVector<QPushButton *> m_board;
     QVector<QString> m_goodBoard;
+    QPushButton *m_push;
 
-private:
+private slots:
+    void clickedButton(int index);
+    void handleGameOver();
 
+signals:
+     void gameOver();
 };
 
 #endif // SUDOKU_H
